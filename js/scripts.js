@@ -172,8 +172,9 @@ function showByTypeFilter(instrumentType){
     var cards = document.getElementsByClassName("card rounded")
     for (element of cards)
     {
+        var isAlreadyHidden = (element.style.display === "none");
         let productType = element.querySelector('.card-type').getAttribute('value');
-        if (instrumentType && productType == instrumentType)
+        if (!isAlreadyHidden && instrumentType && productType == instrumentType)
         {
             //element.removeAttribute('display');
             element.style.display = null;
@@ -181,10 +182,43 @@ function showByTypeFilter(instrumentType){
         }
         else if (instrumentType && productType != instrumentType)
         {
-            element.style.display = "None";
+            element.style.display = "none";
         }
     }
 }
+
+function filterByContent()
+{
+    var input = document.getElementById("myInput");
+    var filter = input.value;
+    var cards = document.getElementsByClassName("card rounded");
+    for (card of cards)
+    {
+        var isAlreadyHidden = (card.style.display === "none");
+        var cardChildElements = card.getElementsByTagName("*");
+        if (!filter)
+        {
+            card.style.display = null;
+            continue;
+        }
+        for (element of cardChildElements)
+        {
+            txtValue = element.textContent || element.innerText;
+            console.log(txtValue);
+            console.log(isAlreadyHidden);
+            if (!isAlreadyHidden && txtValue.indexOf(filter) > -1)
+            {
+                card.style.display = null;
+                break;
+            }
+            else
+            {
+                card.style.display = "none";
+            }
+        }
+    }
+}
+
 function clearFilter()
 {
     var cards = document.getElementsByClassName("card rounded");
