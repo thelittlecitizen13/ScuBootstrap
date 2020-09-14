@@ -103,6 +103,12 @@ function createInstrumentDiv(instrument)
     cardPrice.innerHTML = instrument.price;
     productDiv.appendChild(cardPrice);
 
+    // Product Text - Type (not showed)
+    var cardType = document.createElement('p');
+    cardType.className = 'card-type';
+    cardType.setAttribute('value', instrument.instrumentType.name);
+    productDiv.appendChild(cardType);
+
     // Product Add-To-Cart - Generic
     var addToCardButton = document.createElement('a');
     addToCardButton.className ="btn btn-primary stretched-link"
@@ -145,6 +151,9 @@ function createInstrumentDropdownLink(type)
     var filter = document.createElement('a');
     filter.className = "dropdown-item";
     filter.setAttribute('name', type);
+    filter.setAttribute('href', "#");
+    var onclickAttr =  "showByTypeFilter('" + type + "');return false;";
+    filter.setAttribute('onclick',onclickAttr);
     filter.innerHTML += type;
     return filter;
 }
@@ -159,6 +168,42 @@ function createInstrumentTypeFilter(instruments){
     }
 }
 
+function showByTypeFilter(instrumentType){
+    var cards = document.getElementsByClassName("card rounded")
+    for (element of cards)
+    {
+        let productType = element.querySelector('.card-type').getAttribute('value');
+        if (instrumentType && productType == instrumentType)
+        {
+            //element.removeAttribute('display');
+            element.style.display = null;
+            
+        }
+        else if (instrumentType && productType != instrumentType)
+        {
+            element.style.display = "None";
+        }
+    }
+}
+function clearFilter()
+{
+    var cards = document.getElementsByClassName("card rounded");
+    for (element of cards)
+    {
+        console.log(element);
+        //element.removeAttribute('display');
+        element.style.display = null;
+    }
+}
+
+// function isInstrumentFromType(instrumentType, type)
+// {
+//     var instrument = instruments.find(inst => inst.name == instrumentName);
+//     if (instrument.instrumentType.name == type)
+//         return true;
+//     else
+//         return false;
+// }
 
 var instruments = createInstrumentArray();
 createCards();
