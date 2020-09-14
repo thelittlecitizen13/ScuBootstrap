@@ -48,7 +48,7 @@ function createInstrumentArray(){
         id: 5,
         imagePath: "",
         instrumentOrders: null,
-        instrumentType: {id: 2, name: "פריטה"},
+        instrumentType: {id: 2, name: "מיתר"},
         name: "כינור",
         price: 500,
         typeID: 2,
@@ -68,9 +68,6 @@ function createInstrumentArray(){
     var instruments = [fluteInstrument, harmonicaInstrument,tromboneInstrument, trumpetInstrument, clarinetInstrument, violinInstrument];
     return instruments;
 }
-
-
-
 
 function createInstrumentDiv(instrument)
 {
@@ -122,18 +119,47 @@ function createInstrumentDiv(instrument)
 }
 
 function createCards()
-{
-    console.log = "hello";
-    var instruments = createInstrumentArray();
+{    
     var instrument;
     var cardColumns = document.getElementById("cardColumns");
     for (instrument of instruments)
     {
-        console.log = "hello";
-        console.log = instrument.name;
         var cardDiv = createInstrumentDiv(instrument);
         cardColumns.appendChild(cardDiv);
     }
 }
 
+function createUniqueInstrumentTypeArray(instruments){
+    var allInstrumentTypes = [];
+    for (instrument of instruments)
+    {
+        
+        allInstrumentTypes.push(instrument.instrumentType.name);
+    } 
+    var unique = [...new Set(allInstrumentTypes)]
+    return unique;
+}
+
+function createInstrumentDropdownLink(type)
+{
+    var filter = document.createElement('a');
+    filter.className = "dropdown-item";
+    filter.setAttribute('name', type);
+    filter.innerHTML += type;
+    return filter;
+}
+
+function createInstrumentTypeFilter(instruments){
+    var types = createUniqueInstrumentTypeArray(instruments);
+    var typeFilterDOM = document.getElementById("filterByType");
+    for (type of types)
+    {
+        filter = createInstrumentDropdownLink(type);
+        typeFilterDOM.appendChild(filter);
+    }
+}
+
+
+var instruments = createInstrumentArray();
 createCards();
+createInstrumentTypeFilter(instruments);
