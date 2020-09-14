@@ -83,20 +83,23 @@
                           <div > 
                             <h6> לפי מחיר </h6>
                             <form id="filterByPrice">
-                              <div class="radio">
-                                <label><input type="radio" name="optradio" checked>עד 500$</label>
+                              <div class="checkbox">
+                                <label><input type="checkbox" name="priceCheckbox" id="priceFilter1" minValue="0" maxValue="1000000" onclick="filterByPrice(0, 1000000, 'priceFilter1')" checked>הכל</label>
                               </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio">500$-1000$</label>
+                              <div class="checkbox">
+                                <label><input type="checkbox" name="priceCheckbox" id="priceFilter2" minValue="0" maxValue="500" onclick="filterByPrice(0, 500, 'priceFilter2')">עד 500$</label>
                               </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio" >1000$-1500$</label>
+                              <div class="checkbox">
+                                <label><input type="checkbox" name="priceCheckbox" id="priceFilter3" minValue="500" maxValue="1000" onclick="filterByPrice(500, 1000, 'priceFilter3')">500$-1000$</label>
                               </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio" >1500$-2000$</label>
+                              <div class="checkbox">
+                                <label><input type="checkbox" name="priceCheckbox" id="priceFilter4" minValue="1000" maxValue="1500" onclick="filterByPrice(1000, 1500, 'priceFilter4')">1000$-1500$</label>
                               </div>
-                              <div class="radio">
-                                <label><input type="radio" name="optradio" >2000$-2500$</label>
+                              <div class="checkbox">
+                                <label><input type="checkbox" name="priceCheckbox" id="priceFilter5" minValue="1500" maxValue="2000" onclick="filterByPrice(1500, 2000, 'priceFilter5')">1500$-2000$</label>
+                              </div>
+                              <div class="checkbox">
+                                <label><input type="checkbox" name="priceCheckbox" id="priceFilter6" minValue="2000" maxValue="10000000" onclick="filterByPrice(2000, 10000000, 'priceFilter6')">2000$ +</label>
                               </div>
                             </form>
                         </div>

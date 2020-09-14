@@ -100,7 +100,7 @@ function createInstrumentDiv(instrument)
     // Product Text - price
     var cardPrice = document.createElement('p');
     cardPrice.className = 'card-price';
-    cardPrice.innerHTML = instrument.price;
+    cardPrice.innerHTML = instrument.price + "$";
     productDiv.appendChild(cardPrice);
 
     // Product Text - Type (not showed)
@@ -168,7 +168,90 @@ function createInstrumentTypeFilter(instruments){
     }
 }
 
-function showByTypeFilter(instrumentType){
+function showByTypeFilter(instrumentType)
+{
+    filters.type = instrumentType;
+    filterCards();
+
+}
+
+function filterByContent()
+{
+    
+    var input = document.getElementById("myInput");
+    var filter = input.value;
+    filters.content = filter;
+    filterCards();
+    
+}
+
+function filterByPrice(minPrice, maxPrice, id)
+{
+    var cbox = document.getElementById(id);
+    if (cbox.checked == true)
+    {
+        var priceRange = {"minPrice": minPrice, "maxPrice":maxPrice};
+        if (filters.price){
+            filters.price.push(priceRange);
+        }
+        else{
+            filters.price = [priceRange];
+        }
+    }
+    else
+    {
+        var index = 0;
+        var newPriceFilters = [];
+        for (priceFilter of filters.price)
+        {
+            index++;
+            if (priceFilter.minPrice == minPrice && priceFilter.maxPrice == maxPrice)
+            {
+                continue;
+            }
+            else{
+                var tempMinPrice = priceFilter.minPrice;
+                var tempMaxPrice = priceFilter.maxPrice;
+                newPriceFilters.push({"minPrice": tempMinPrice, "maxPrice":tempMaxPrice });
+            }
+            
+            filters.price = newPriceFilters;
+        }
+    }
+    
+    filterCards();
+    
+}
+function filterCards()
+{
+    var contentFilter = filters.content;
+    var cards = document.getElementsByClassName("card rounded");
+    for (card of cards)
+    {
+        var isAlreadyHidden = (card.style.display === "none");
+        var cardChildElements = card.getElementsByTagName("*");
+        if (!contentFilter)
+        {
+            card.style.display = null;
+            continue;
+        }
+        for (element of cardChildElements)
+        {
+            txtValue = element.textContent || element.innerText;
+            if (!isAlreadyHidden && txtValue.indexOf(contentFilter) > -1)
+            {
+                card.style.display = null;
+                break;
+            }
+            else
+            {
+                card.style.display = "none";
+            }
+        }
+    }
+
+
+    var instrumentType = filters.type;
     var cards = document.getElementsByClassName("card rounded")
     for (element of cards)
     {
@@ -185,38 +268,34 @@ function showByTypeFilter(instrumentType){
             element.style.display = "none";
         }
     }
-}
 
-function filterByContent()
-{
-    var input = document.getElementById("myInput");
-    var filter = input.value;
-    var cards = document.getElementsByClassName("card rounded");
-    for (card of cards)
+    for(priceRange of filters.price)
     {
-        var isAlreadyHidden = (card.style.display === "none");
-        var cardChildElements = card.getElementsByTagName("*");
-        if (!filter)
+        var maxPrice = priceRange.maxPrice;
+        var minPrice = priceRange.minPrice;
+        if (maxPrice || minPrice)
         {
-            card.style.display = null;
-            continue;
-        }
-        for (element of cardChildElements)
-        {
-            txtValue = element.textContent || element.innerText;
-            console.log(txtValue);
-            console.log(isAlreadyHidden);
-            if (!isAlreadyHidden && txtValue.indexOf(filter) > -1)
+            var cards = document.getElementsByClassName("card rounded");
+            for (card of cards)
             {
-                card.style.display = null;
-                break;
-            }
-            else
-            {
-                card.style.display = "none";
+                var isAlreadyHidden = (card.style.display === "none");
+                var productPriceElement = card.getElementsByClassName("card-price")[0];
+                var productPriceString = productPriceElement.textContent || productPriceElement.innerText;
+                var productPrice = productPriceString.replace("$", "");
+                if (!isAlreadyHidden && productPrice >= minPrice && productPrice <= maxPrice)
+                {
+                    card.style.display = null;
+                    continue;
+                }
+                else
+                {
+                    card.style.display = "none";
+                }
+                
             }
         }
     }
+    
 }
 
 function clearFilter()
@@ -224,7 +303,6 @@ function clearFilter()
     var cards = document.getElementsByClassName("card rounded");
     for (element of cards)
     {
-        console.log(element);
         //element.removeAttribute('display');
         element.style.display = null;
     }
@@ -238,6 +316,8 @@ function clearFilter()
 //     else
 //         return false;
 // }
+
+var filters = {};
 
 var instruments = createInstrumentArray();
 createCards();
