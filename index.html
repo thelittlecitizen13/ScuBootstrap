@@ -1,9 +1,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/styles.css"
+        <link rel="stylesheet" href="css/styles.css">
+        <meta charset="UTF-8">
     </head>
-    <body>
+    <body class="bg-light text-dark">
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="collapse navbar-collapse justify-content-end">
@@ -12,6 +13,11 @@
                 <ul class="navbar-nav ml-auto">
                     <a class="navbar-brand" href="#">מוזיק</a>
                   <li class="nav-item">
+                      <!-- 
+                    <a class="navbar-brand" href="#">
+                        <img src="bird.jpg" alt="logo" style="width:40px;">
+                    </a>  
+                      -->   
                     <a class="nav-link" href="#">דף הבית</a>
                   </li>
                   <li class="nav-item">
@@ -55,10 +61,109 @@
             
         
         </nav>
-        
+        <div class="container-fluid">
+            <div class="row">
+            <div>
+                <div class="col-3">
+                        <h5> סינון </h5>
+                    <!--<section class="mb-3" >
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                        <h6 class="font-weight-bold">תנאי</h6>
+                  
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="">עד 500$</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="">500$-1000$</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="">1000$-1500$</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="">1500$-2000$</label>
+                          </div>-->
+                          <form>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio" checked>עד 500$</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio">500$-1000$</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio" >1000$-1500$</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio" >1500$-2000$</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio" >2000$-2500$</label>
+                            </div>
+                          </form>
+                </div> 
+            </div>
+                <div class="Card-columns text-center col-9">
+                    <div class=" card rounded">
+                        <img class="card-img-top" src="image/halil.png" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">חליל</h4>
+                          <p class="card-text">שם של חומוסיה</p>
+                          <p class="card-price">1500$</p>
+                          <a href="#" class="btn btn-primary stretched-link"><img class="cart-img" src="Image/cart.png" alt="logo"> הוספה לעגלה</a>
+                        </div>
+                      </div>
+                      <div class="card rounded">
+                        <img class="card-img-top" src="image/hazuzra.png" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">חצוצרה</h4>
+                          <p class="card-text">חצוצרה מחשמלת</p>
+                          <p class="card-price">35$</p>
+                          <a href="#" class="btn btn-primary stretched-link"><img class="cart-img" src="Image/cart.png" alt="logo"> הוספה לעגלה</a>
+                        </div>
+                      </div>
+                      <div class="card rounded">
+                        <img class="card-img-top" src="image/mapuhit.png" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">מפוחית</h4>
+                          <p class="card-text">מפוחית בטעם של פעם</p>
+                          <p class="card-price">50$</p>
+                          <a href="#" class="btn btn-primary stretched-link"><img class="cart-img" src="Image/cart.png" alt="logo"> הוספה לעגלה</a>
+                        </div>
+                      </div>
+                      <div class="card rounded">
+                        <img class="card-img-top" src="image/klarinet.png" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">קלרינט</h4>
+                          <p class="card-text">הכלי של סקווידוויד</p>
+                          <p class="card-price">2300$</p>
+                          <a href="#" class="btn btn-primary stretched-link"><img class="cart-img" src="Image/cart.png" alt="logo"> הוספה לעגלה</a>
+                        </div>
+                      </div>
+                      <div class="card rounded">
+                        <img class="card-img-top" src="image/trombone.png" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">טרומבון</h4>
+                          <p class="card-text">סופר-טרומבון</p>
+                          <p class="card-price">1000$</p>
+                          <a href="#" class="btn btn-primary stretched-link"><img class="cart-img" src="Image/cart.png" alt="logo"> הוספה לעגלה</a>
+                        </div>
+                      </div>
+                      <div class="card rounded">
+                        <img class="card-img-top" src="" alt="Card image">
+                        <div class="card-body">
+                          <h4 class="card-title">כינור</h4>
+                          <p class="card-text">סתם כינור (סקאם)</p>
+                          <p class="card-price">500$</p>
+                          <a href="#" class="btn btn-primary stretched-link"><img class="cart-img" src="Image/cart.png" alt="logo"> הוספה לעגלה</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
